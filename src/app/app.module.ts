@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import {SmartTableComponent} from "./smarttable/component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SmartTableComponent
   ],
   imports: [
     BrowserModule,
