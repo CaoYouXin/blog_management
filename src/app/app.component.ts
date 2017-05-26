@@ -42,6 +42,8 @@ export class AppComponent {
       {name: 'script', text: '脚本', type: 'text', width: '100px'},
       {name: 'brief', text: '简介', type: 'text', width: '100px'},
       {name: 'screenshot', text: '截图', type: 'text', width: '100px'},
+      {name: 'platform', text: '平台', type: 'text', inplaceCombo: 'name', data: [{name: 'All'}, {name: 'Pc'}, {name: 'Mobile'}]},
+      {name: 'like', text: 'Like', type: 'number', disabled: true},
     ],
     key: 'id',
     editorId: 'CategoryEditor',
