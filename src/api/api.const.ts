@@ -5,29 +5,33 @@ export class API {
   static mode = environment.production ? 'prod' : 'dev';
   static api = {
     "FetchCategory": {
-      "prod": "/blog/category/list",
-      "dev": "http://localhost:8080/blog/category/list"
+      "prod": "/blog_api/category/list",
+      "dev": "http://localhost:8080/blog_api/category/list"
     },
     "SaveCategory": {
-      "prod": "/blog/category/save",
-      "dev": "http://localhost:8080/blog/category/save"
+      "prod": "/blog_api/category/save",
+      "dev": "http://localhost:8080/blog_api/category/save"
     },
     "DeleteCategory": {
-      "prod": "/blog/category/delete",
-      "dev": "http://localhost:8080/blog/category/delete"
+      "prod": "/blog_api/category/delete",
+      "dev": "http://localhost:8080/blog_api/category/delete"
     },
     "FetchPost": {
-      "prod": "/blog/post/list",
-      "dev": "http://localhost:8080/blog/post/list"
+      "prod": "/blog_api/post/list",
+      "dev": "http://localhost:8080/blog_api/post/list"
     },
     "SavePost": {
-      "prod": "/blog/post/save",
-      "dev": "http://localhost:8080/blog/post/save"
+      "prod": "/blog_api/post/save",
+      "dev": "http://localhost:8080/blog_api/post/save"
     },
     "DeletePost": {
-      "prod": "/blog/post/delete",
-      "dev": "http://localhost:8080/blog/post/delete"
-    }
+      "prod": "/blog_api/post/delete",
+      "dev": "http://localhost:8080/blog_api/post/delete"
+    },
+    "GetResourceLevel": {
+      "prod": "/resources/level/list",
+      "dev": "http://localhost:8080/resources/level/list"
+    },
   };
 
   static getAPI(name: string) {

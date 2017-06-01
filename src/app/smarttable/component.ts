@@ -133,7 +133,11 @@ export class SmartTableComponent implements OnInit {
       if (!!col.combo) {
         return;
       }
-      postData[col.name] = this.editor[index] === undefined ? null : this.editor[index];
+      let value = this.editor[index] === undefined ? null : this.editor[index];
+      if (col.prefix) {
+        value = col.prefix + value;
+      }
+      postData[col.name] = value;
     });
 
     self.dao.post(self.template.saveUrl, postData)

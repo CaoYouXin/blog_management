@@ -63,29 +63,33 @@ var API = (function () {
     API.mode = __WEBPACK_IMPORTED_MODULE_0__environments_environment__["a" /* environment */].production ? 'prod' : 'dev';
     API.api = {
         "FetchCategory": {
-            "prod": "/blog/category/list",
-            "dev": "http://localhost:8080/blog/category/list"
+            "prod": "/blog_api/category/list",
+            "dev": "http://localhost:8080/blog_api/category/list"
         },
         "SaveCategory": {
-            "prod": "/blog/category/save",
-            "dev": "http://localhost:8080/blog/category/save"
+            "prod": "/blog_api/category/save",
+            "dev": "http://localhost:8080/blog_api/category/save"
         },
         "DeleteCategory": {
-            "prod": "/blog/category/delete",
-            "dev": "http://localhost:8080/blog/category/delete"
+            "prod": "/blog_api/category/delete",
+            "dev": "http://localhost:8080/blog_api/category/delete"
         },
         "FetchPost": {
-            "prod": "/blog/post/list",
-            "dev": "http://localhost:8080/blog/post/list"
+            "prod": "/blog_api/post/list",
+            "dev": "http://localhost:8080/blog_api/post/list"
         },
         "SavePost": {
-            "prod": "/blog/post/save",
-            "dev": "http://localhost:8080/blog/post/save"
+            "prod": "/blog_api/post/save",
+            "dev": "http://localhost:8080/blog_api/post/save"
         },
         "DeletePost": {
-            "prod": "/blog/post/delete",
-            "dev": "http://localhost:8080/blog/post/delete"
-        }
+            "prod": "/blog_api/post/delete",
+            "dev": "http://localhost:8080/blog_api/post/delete"
+        },
+        "GetResourceLevel": {
+            "prod": "/resources/level/list",
+            "dev": "http://localhost:8080/resources/level/list"
+        },
     };
     return API;
 }());
@@ -139,15 +143,17 @@ var AppComponent = (function () {
                 { name: 'name', text: 'Post名称', type: 'text' },
                 { name: 'create', text: '创建时间', type: 'date', disabled: true },
                 { name: 'update', text: '修改时间', type: 'date', disabled: true },
-                { name: 'url', text: 'URL', type: 'text' },
+                { name: 'url', text: 'URL', type: 'text', width: '100px', prefix: 'http://localhost:8080/resources/r' },
                 { name: 'categoryId', text: '分类ID', type: 'number', disabled: true },
                 { name: 'categoryName', text: '分类名称', type: 'text', combo: 'categoryId', key: 'id', value: 'name', url: __WEBPACK_IMPORTED_MODULE_1__api_api_const__["a" /* API */].getAPI("FetchCategory") },
                 { name: 'type', text: '类型', type: 'text', inplaceCombo: 'name', data: [{ name: 'App' }, { name: 'Article' }] },
-                { name: 'script', text: '脚本', type: 'text', width: '100px' },
+                { name: 'script', text: '脚本', type: 'text', width: '100px', prefix: 'http://localhost:8080/resources/r' },
                 { name: 'brief', text: '简介', type: 'text', width: '100px' },
                 { name: 'screenshot', text: '截图', type: 'text', width: '100px' },
                 { name: 'platform', text: '平台', type: 'text', inplaceCombo: 'name', data: [{ name: 'All' }, { name: 'Pc' }, { name: 'Mobile' }] },
                 { name: 'like', text: 'Like', type: 'number', disabled: true },
+                { name: 'resourceLevelId', text: '资源级别ID', type: 'number', disabled: true },
+                { name: 'resourceLevelName', text: '资源级别名称', type: 'text', combo: 'resourceLevelId', key: 'id', value: 'name', url: __WEBPACK_IMPORTED_MODULE_1__api_api_const__["a" /* API */].getAPI("GetResourceLevel") },
             ],
             key: 'id',
             editorId: 'CategoryEditor',
@@ -330,7 +336,11 @@ var SmartTableComponent = (function () {
             if (!!col.combo) {
                 return;
             }
-            postData[col.name] = _this.editor[index] === undefined ? null : _this.editor[index];
+            var value = _this.editor[index] === undefined ? null : _this.editor[index];
+            if (col.prefix) {
+                value = col.prefix + value;
+            }
+            postData[col.name] = value;
         });
         self.dao.post(self.template.saveUrl, postData)
             .map(function (res) { return res.json(); })
