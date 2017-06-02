@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {SmartTableComponent} from "./smarttable/component";
+import { SmartTableComponent } from 'caols-common-modules';
 
 @NgModule({
   declarations: [

@@ -31,7 +31,7 @@ export class API {
     "GetResourceLevel": {
       "prod": "/resources/level/list",
       "dev": "http://localhost:8080/resources/level/list"
-    },
+    }
   };
 
   static getAPI(name: string) {
