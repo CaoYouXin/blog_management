@@ -239,6 +239,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../.4.3.2@@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../../.4.3.2@@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_index__ = __webpack_require__("../../../../../src/app/component/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__guard__ = __webpack_require__("../../../../../src/app/guard/index.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return routes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -250,32 +251,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["b" /* HomeComponent */], data: { name: 'Home' } },
     {
-        path: 'resource', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["f" /* TabsComponent */], data: { name: '资源管理' },
+        path: 'resource', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["f" /* TabsComponent */], data: { name: '资源管理' }, canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]],
         children: [
-            { path: 'types', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["j" /* ResourceManagerComponent */], data: { name: "资源类型管理" } },
-            { path: 'mapping', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["l" /* ResourceMappingComponent */], data: { name: "资源-文件映射管理" } },
-            { path: 'upload', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["n" /* ResourceUploadComponent */], data: { name: "资源上传管理" } },
-            { path: 'deploy', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["o" /* ResourceDeployComponent */], data: { name: "资源部署管理" } }
+            { path: 'types', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["j" /* ResourceManagerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "资源类型管理" } },
+            { path: 'mapping', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["l" /* ResourceMappingComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "资源-文件映射管理" } },
+            { path: 'upload', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["n" /* ResourceUploadComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "资源上传管理" } },
+            { path: 'deploy', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["o" /* ResourceDeployComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "资源部署管理" } }
         ]
     },
-    { path: 'user', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["p" /* BlogUserComponent */], data: { name: '用户管理' } },
+    { path: 'user', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["p" /* BlogUserComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: '用户管理' } },
     {
-        path: 'favour', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["f" /* TabsComponent */], data: { name: '好感度管理' },
+        path: 'favour', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["f" /* TabsComponent */], data: { name: '好感度管理' }, canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]],
         children: [
-            { path: 'list', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["q" /* FavourDetailComponent */], data: { name: "用户好感度列表" } },
-            { path: 'mapping', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["s" /* FavourMappingComponent */], data: { name: "好感度-资源映射管理" } },
-            { path: 'rule', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["u" /* FavourRuleComponent */], data: { name: "好感度规则管理" } }
+            { path: 'list', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["q" /* FavourDetailComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "用户好感度列表" } },
+            { path: 'mapping', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["s" /* FavourMappingComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "好感度-资源映射管理" } },
+            { path: 'rule', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["u" /* FavourRuleComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "好感度规则管理" } }
         ]
     },
     {
-        path: 'post', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["f" /* TabsComponent */], data: { name: 'POST 管理' },
+        path: 'post', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["f" /* TabsComponent */], data: { name: 'POST 管理' }, canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]],
         children: [
-            { path: 'category', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["w" /* BlogCategoryComponent */], data: { name: "分类管理" } },
-            { path: 'post', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["A" /* BlogPostComponent */], data: { name: "Post 管理" } },
-            { path: 'comment', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["D" /* BlogCommentComponent */], data: { name: "评论管理" } }
+            { path: 'category', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["w" /* BlogCategoryComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "分类管理" } },
+            { path: 'post', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["A" /* BlogPostComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "Post 管理" } },
+            { path: 'comment', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["D" /* BlogCommentComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_3__guard__["a" /* AuthGuard */]], data: { name: "评论管理" } }
         ]
     },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_2__component_index__["c" /* LoginComponent */] },
